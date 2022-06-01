@@ -13,6 +13,7 @@
 #include "include/file.h"
 #include "include/trap.h"
 #include "include/vm.h"
+#include "include/vma.h"
 
 
 struct cpu cpus[NCPU];
@@ -448,7 +449,7 @@ exit(int status)
   struct vma* pv;
   while(v){
     writeback(v, v->start, v->length);
-    uvmunmap(p->pagetable, v->start, PGROUNDUP(v->length) / PGSIZE, 1);
+    vmunmap(p->pagetable, v->start, PGROUNDUP(v->length) / PGSIZE, 1);
     fileclose(v->file);
     pv = v->next;
     acquire(&v->lock);

@@ -1,5 +1,5 @@
-#ifndef _MMAP_H
-#define _MMAP_H
+#ifndef __MMAP_H
+#define __MMAP_H
 
 #define NVMA 16
 #define VMA_START (MAXVA / 2)

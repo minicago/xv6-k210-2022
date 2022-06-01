@@ -1,5 +1,5 @@
-#ifndef _VMA_H
-#define _VMA_H
+#ifndef __VMA_H
+#define __VMA_H
 
 #include "param.h"
 #include "riscv.h"
@@ -25,9 +25,11 @@ struct vma
   struct spinlock lock;
 };
 
-struct vma vma_list[NVMA];
+extern struct vma vma_list[NVMA];
+
 struct vma* vma_alloc();
-uint64 sys_mmap(void);
-uint64 sys_munmap(void);
+int mmap_handler(uint64 va, int scause);
+void writeback(struct vma* v, uint64 addr, int n);
+
 
 #endif

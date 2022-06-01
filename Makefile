@@ -38,7 +38,8 @@ OBJS += \
   $K/disk.o \
   $K/fat32.o \
   $K/plic.o \
-  $K/console.o
+  $K/console.o \
+  $K/vma.o \
 
 ifeq ($(platform), k210)
 OBJS += \

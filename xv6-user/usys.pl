@@ -42,4 +42,4 @@ entry("trace");
 entry("sysinfo");
 entry("rename");
 entry("mmap");
-entry("unmmap");
+entry("munmap");

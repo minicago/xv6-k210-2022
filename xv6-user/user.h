@@ -35,7 +35,7 @@ int trace(int mask);
 int sysinfo(struct sysinfo *);
 int rename(char *old, char *new);
 int mmap(int start,int len,int prot,int flags,int fd,int off);
-int unmmap(int start,int len);
+int munmap(int start,int len);
 
 // ulib.c
 int stat(const char*, struct stat*);
