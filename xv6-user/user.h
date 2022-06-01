@@ -1,6 +1,7 @@
 #include "kernel/include/types.h"
 #include "kernel/include/stat.h"
 #include "kernel/include/fcntl.h"
+#include "kernel/include/mmap.h"
 
 struct stat;
 struct rtcdate;
@@ -33,6 +34,8 @@ int remove(char *filename);
 int trace(int mask);
 int sysinfo(struct sysinfo *);
 int rename(char *old, char *new);
+int mmap(int start,int len,int prot,int flags,int fd,int off);
+int unmmap(int start,int len);
 
 // ulib.c
 int stat(const char*, struct stat*);

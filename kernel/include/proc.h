@@ -8,6 +8,7 @@
 #include "file.h"
 #include "fat32.h"
 #include "trap.h"
+#include "vma.h"
 
 // Saved registers for kernel context switches.
 struct context {
@@ -62,9 +63,13 @@ struct proc {
   struct context context;      // swtch() here to run process
   struct file *ofile[NOFILE];  // Open files
   struct dirent *cwd;          // Current directory
+  struct vma *vma;             // Vma table
   char name[16];               // Process name (debugging)
   int tmask;                    // trace mask
 };
+
+
+
 
 void            reg_info(void);
 int             cpuid(void);
@@ -91,5 +96,6 @@ int             either_copyin(void *dst, int user_src, uint64 src, uint64 len);
 void            procdump(void);
 uint64          procnum(void);
 void            test_proc_init(int);
+
 
 #endif

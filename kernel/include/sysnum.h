@@ -28,5 +28,7 @@
 #define SYS_readdir     24
 #define SYS_getcwd      25
 #define SYS_rename      26
+#define SYS_mmap        27
+#define SYS_unmmap      28
 
 #endif
