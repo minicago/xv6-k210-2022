@@ -9,6 +9,7 @@
 #include "include/printf.h"
 #include "include/string.h"
 #include "include/vma.h"
+#include "include/buf.h"
 
 
 struct vma vma_list[NVMA];
@@ -72,13 +73,12 @@ writeback(struct vma* v, uint64 addr, int n)
 
   struct file* f = v->file;
 
-  int max = ((MAXOPBLOCKS-1-1-2) / 2) * FSSIZE;
+  int max = ((MAXOPBLOCKS-1-1-2) / 2) * BSIZE;
   int i = 0;
   while(i < n){
     int n1 = n - i;
     if(n1 > max)
       n1 = max;
-
     elock(f->ep);
     printf("%p %d %d\n",addr + i, v->off + v->start - addr, n1);
     int r = ewrite(f->ep, 1, addr + i, v->off + v->start - addr + i, n1);
